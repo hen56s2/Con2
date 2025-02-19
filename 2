@@ -7,12 +7,12 @@ local des = player.PlayerGui.Style.BG.Desc
 local function createGojoAura()
     local trail = Instance.new("Trail")
     trail.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(173, 216, 230)), -- Light Blue (Gojo's Eyes)
-        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(135, 206, 250)), -- Sky Blue
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(173, 216, 230))
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(135, 206, 250)), -- Sky Blue
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(70, 130, 180)), -- Steel Blue
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(135, 206, 250))  -- Sky Blue
     })
     trail.LightEmission = 1
-    trail.Transparency = NumberSequence.new(0.1, 0.5)
+    trail.Transparency = NumberSequence.new(0.1, 0.3)
     trail.Lifetime = 1.5
     trail.MinLength = 5
     trail.MaxLength = 10
@@ -33,14 +33,14 @@ createGojoAura()
 
 while wait() do
     local time = tick() * 2
-    local r = math.sin(time) * 127 + 128
-    local g = math.sin(time + 2 * math.pi / 3) * 127 + 128
-    local b = math.sin(time + 4 * math.pi / 3) * 127 + 128
-    local rainbowColor = Color3.fromRGB(r, g, b)
+    local r = math.sin(time) * 70 + 185
+    local g = math.sin(time + 2 * math.pi / 3) * 80 + 176
+    local b = math.sin(time + 4 * math.pi / 3) * 100 + 255
+    local skyBlueColor = Color3.fromRGB(r, g, b)
     
     st.Text = "Gojo Satoru"
-    st.TextColor3 = rainbowColor
+    st.TextColor3 = skyBlueColor
     Slot.Text = "Gojo Satoru"
-    Slot.TextColor3 = rainbowColor
-    des.Text = "The Strongest Player Today"
+    Slot.TextColor3 = skyBlueColor
+    des.Text = "The Honored One"
 end
