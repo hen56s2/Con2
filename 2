@@ -1,0 +1,39 @@
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local st = player.PlayerGui:WaitForChild("Style").BG.StyleTxt
+local Slot = player.PlayerGui.Style.BG.Slots.ScrollingFrame.Slot1.Text
+local des = player.PlayerGui.Style.BG.Desc
+
+local function createRedTail()
+    local trail = Instance.new("Trail")
+    trail.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(139, 0, 0)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))
+    })
+    trail.LightEmission = 1
+    trail.Transparency = NumberSequence.new(0.1, 0.5)
+    trail.Lifetime = 1.5
+    trail.MinLength = 5
+    trail.MaxLength = 10
+    trail.WidthScale = NumberSequence.new(5)
+
+    local attachment0 = Instance.new("Attachment", character.HumanoidRootPart)
+    attachment0.Position = Vector3.new(0, 0, -3)
+    
+    local attachment1 = Instance.new("Attachment", character.HumanoidRootPart)
+    attachment1.Position = Vector3.new(0, 0, 3)
+    
+    trail.Attachment0 = attachment0
+    trail.Attachment1 = attachment1
+    trail.Parent = character.HumanoidRootPart
+end
+
+createRedTail()
+
+while wait() do
+    st.Text = "Gojo Satoru"
+    st.TextColor3 = Color3.fromRGB(0, 255, 255)
+    Slot.Text = "Gojo Satoru"
+    Slot.TextColor3 = Color3.fromRGB(0, 255, 255)
+    des.Text = "The Strongest Sorcerer Today"
+end
