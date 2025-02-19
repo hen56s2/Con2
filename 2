@@ -4,11 +4,12 @@ local st = player.PlayerGui:WaitForChild("Style").BG.StyleTxt
 local Slot = player.PlayerGui.Style.BG.Slots.ScrollingFrame.Slot1.Text
 local des = player.PlayerGui.Style.BG.Desc
 
-local function createRedTail()
+local function createGojoAura()
     local trail = Instance.new("Trail")
     trail.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(139, 0, 0)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 255)),
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 255))
     })
     trail.LightEmission = 1
     trail.Transparency = NumberSequence.new(0.1, 0.5)
@@ -28,12 +29,18 @@ local function createRedTail()
     trail.Parent = character.HumanoidRootPart
 end
 
-createRedTail()
+createGojoAura()
 
 while wait() do
+    local time = tick() * 2
+    local r = math.sin(time) * 127 + 128
+    local g = math.sin(time + 2 * math.pi / 3) * 127 + 128
+    local b = math.sin(time + 4 * math.pi / 3) * 127 + 128
+    local rainbowColor = Color3.fromRGB(r, g, b)
+    
     st.Text = "Gojo Satoru"
-    st.TextColor3 = Color3.fromRGB(0, 255, 255)
+    st.TextColor3 = rainbowColor
     Slot.Text = "Gojo Satoru"
-    Slot.TextColor3 = Color3.fromRGB(0, 255, 255)
-    des.Text = "The Strongest Sorcerer Today"
+    Slot.TextColor3 = rainbowColor
+    des.Text = "The Honored One"
 end
